@@ -136,10 +136,10 @@ class IndexDispatcher:
                         self._logger.warning('Updating config hash of index `%s`', name)
                         index_state.config_hash = new_hash  # type: ignore
                         await index_state.save()
-                    else:
-                        await self._ctx.reindex(
-                            ReindexingReason.CONFIG_HASH_MISMATCH, index_hash=index_state.config_hash, old_hash=old_hash, new_hash=new_hash
-                        )
+                    # else:
+                    #     await self._ctx.reindex(
+                    #         ReindexingReason.CONFIG_HASH_MISMATCH, index_hash=index_state.config_hash, old_hash=old_hash, new_hash=new_hash
+                    #     )
 
             # NOTE: Templated index: recreate index config, verify hash
             elif template:
